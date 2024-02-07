@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ホーム{% endblock %}
+
+{% block contents %}
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <style>
+            .slider {
+                width: 1200px;
+                height: 400px;
+                background-color: transparent; /* 背景色を透明に設定 */
+            }
+        </style>
+        <!-- 画像スライドショーのコンテナ -->
+        <div class="slider" style="width: 1200px; height: 400px;">
+            <img src="{% static 'assets/img/pickup/nier-slide_pc.jpg' %}" width="100%" height="100%" alt="">
+            <img src="{% static 'assets/img/pickup/azuren-slide_pc.jpg' %}" width="100%" height="100%" alt="">
+            <img src="{% static 'assets/img/pickup/dxd_peterpan_pc.jpg' %}" width="100%" height="100%" alt="">
+            <img src="{% static 'assets/img/pickup/minilo_top_pc.jpg' %}" width="100%" height="100%" alt="">
+            <img src="{% static 'assets/img/pickup/ya-mp-kitsune-pc.png' %}" width="100%" height="100%" alt="">
+            
+        </div>
+
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+        </div>
+
+        {% if messages %}
+            <div class="container">
+            <div class="row">
+            <div class="my-div-style w-100">
+                <ul class="messages" style="list-style: none;">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                    {{ message }}
+                </li>
+                {% endfor %}
+                </ul>
+            </div>
+            </div>
+            </div>
+        {% endif %}
+
+        <!-- Masthead Subheading -->
+        <!-- 予備テキスト欄 -->
+        <p class="masthead-subheading font-weight-light mb-0"></p>
+    </div>
+</header>
+{% endblock %}

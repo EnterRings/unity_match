@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}レビュー詳細{% endblock %}
+
+{% block contents %}
+<div class="container" style="margin-top: 150px;">
+  <h1>レビュー詳細</h1>
+  <table class="table table-bordered">
+    <tr>
+      <th style="width: 150px;">製品名</th>
+      <td>{{ object.product_name }}</td>
+    </tr>
+    <tr>
+      <th>硬度</th><td>{{object.hardness}}</td>
+    </tr>
+    <tr>
+      <th>滑走速度</th><td>{{object.planing_speed}}</td>
+    </tr>
+    <tr>
+      <th>コントロール性</th><td>{{object.control}}</td>
+    </tr>
+    <tr>
+      <th>滑り出しの速さ</th><td>{{object.speed_of_start}}</td>
+    </tr>
+    <tr>
+      <th>底面</th><td>{{object.bottom}}</td>
+    </tr>
+    <tr>
+      <th>巻き癖</th><td>{{object.roll}}</td>
+    </tr>
+    <tr>
+      <th>エッジ加工</th><td>{{object.edge}}</td>
+    </tr>
+    <tr>
+      <th>耐久性</th><td>{{object.durability}}</td>
+    </tr>
+    <tr>
+      <th>使用マウス</th><td>{{object.mouse}}</td>
+    </tr>
+    <tr>
+      <th>使用ソール</th><td>{{object.sole}}</td>
+    </tr>
+    <tr>
+      <th>レビュー</th><td>{{object.review}}</td>
+    </tr>
+  </table>
+
+  <a class="btn btn-success float-right mt-3" href="{% url 'library:private_list' %}">OK</a>
+</div>
+{% endblock %}

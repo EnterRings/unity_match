@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}レビュー詳細{% endblock %}
+
+{% block contents %}
+  <div class="container" style="margin-top: 150px;">
+    <div class="row">
+      <div class="col-md-8">
+        <div style="margin-bottom: 20px;"> <!-- 余白を作るための新しい <div> タグ -->
+          <h1>{{ product_name }} の詳細</h1>
+          <ul class="list-group">
+            <li class="list-group-item">メーカー名: {{ mousepad.maker }}</li>
+            <li class="list-group-item">材質: {{ mousepad.material }}</li>
+            <li class="list-group-item">サイズ: {{ mousepad.size }}</li>
+            <li class="list-group-item">値段: {{ mousepad.price }}</li>
+            <li class="list-group-item">概要: {{ mousepad.summary }}</li>
+            <li class="list-group-item">硬度: {{ most_common_hardness }}</li>
+            <li class="list-group-item">滑走速度: {{ most_common_planing_speed }}</li>
+            <li class="list-group-item">コントロール性: {{ most_common_control }}</li>
+            <li class="list-group-item">滑り出しの速さ: {{ most_common_speed_of_start }}</li>
+            <li class="list-group-item">底面: {{ most_common_bottom }}</li>
+            <li class="list-group-item">巻き癖: {{ most_common_roll }}</li>
+            <li class="list-group-item">エッジ加工: {{ most_common_edge }}</li>
+            <li class="list-group-item">耐久性: {{ most_common_durability }}</li>
+            <li class="list-group-item">URL: {{ mousepad.link }}</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-bottom: 30px;">
+        <a class="btn btn-success btn-block mt-3" href="{% url 'library:book_list' %}">OK</a>
+        <a class="btn btn-success btn-block mt-3" href="{% url 'library:review_list' product_name %}">REVIEW</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

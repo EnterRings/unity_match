@@ -1,0 +1,22 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block title %}管理者 | 製品情報更新更新{% endblock %}
+
+{% block contents %}
+<div class="container">
+  <div class="row">
+    <div class="my-div-style w-100">
+      <form method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <h1>製品情報更新</h1>
+        <table class="table">
+          {{ form.as_table }}
+        </table>
+        <a class="btn btn-warning" href="{% url 'library:product_detail' object.pk %}">キャンセル</a>
+        <button class="btn btn-success" type="submit">更新</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

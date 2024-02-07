@@ -1,0 +1,49 @@
+{% load static %}
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Y.Takeda">
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    {% block head %}{% endblock %}
+  </head>
+
+  <body>
+	<div id="wrapper">
+    {% block header%}{% endblock %}
+
+    {% if messages %}
+      <div class="container">
+        <div class="row">
+        <div class="my-div-style w-100">
+          <ul class="messages" style="list-style: none;">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+              {{ message }}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% block contents %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="py-5 bg-black">
+      <div class="container">
+        <p class="m-0 text-center text-white small">Copyright &copy; 新井班</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+  </div>
+  </body>
+
+</html>

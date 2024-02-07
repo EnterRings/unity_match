@@ -1,0 +1,52 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block title %}管理者 | 製品情報削除{% endblock %}
+
+{% block contents %}
+<div class="container">
+  <h1>製品情報削除</h1>
+  <table>
+    <tr>
+      <th>製品名</th><td>{{object.product}}</td>
+    </tr>
+    <tr>
+      <th>メーカー名</th><td>{{object.maker}}</td>
+    </tr>
+    <tr>
+      <th>材質</th><td>{{object.material}}</td>
+    </tr>
+    <tr>
+      <th>サイズ</th><td>{{object.size}}</td>
+    </tr>
+    <tr>
+      <th>値段</th><td>{{object.price}}</td>
+    </tr>
+    <tr>
+      <th>概要</th><td>{{object.summary}}</td>
+    </tr>
+    <tr>
+      <th>画像</th>
+      <td>
+        <img src="/static/assets/img/{{ object.image }}" 
+            width="250" height="200"/>
+      </td>
+    </tr>
+    <tr>
+      <th>リンク</th><td>{{object.link}}</td>
+    </tr>
+    <tr>
+      <th>作成日時</th><td>{{object.created_at}}</td>
+    </tr>
+    <tr>
+      <th>更新日時</th><td>{{object.updated_at}}</td>
+    </tr>
+  </table>
+  <form method="POST">
+    {% csrf_token %}
+    <a class="btn btn btn-warning float-right" href="{% url 'library:product_list' %}">キャンセル
+    </a>
+    <button class="btn btn-danger float-right" type="submit">削除</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}      
+{% load static %}
+
+{% block title %}レビュー一覧{% endblock %}
+
+{% block contents %}
+<div class="container" style="margin-top: 150px;">
+  <h1>レビュー一覧</h1>
+  <form method="POST">
+  <table class="table table-striped">
+    <!-- <caption class="caption-top">レビュー一覧</caption> -->
+    <thead>
+    <tr>
+      <th>製品名</th>
+      <th>更新</th><th>削除</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for book in book_list %}
+    <tr>
+      <!-- 詳細リンク -->
+      <td>
+        <a href="{% url 'library:private_detail' book.pk %}">
+          {{book.product_name}}
+        </a>
+      </td>
+      <!-- 更新処理 -->
+      <td>
+        <a class="btn btn-success float-right" href="{% url 'library:book_update' book.pk %}">更新</a>
+      </td>
+      <!-- 削除処理 -->
+      <td>
+        <a class="btn btn-danger float-right" href="{% url 'library:book_delete' book.pk %}">削除</a>
+      </td>
+    </tr>
+    {% empty %}
+    <p>書籍がありません</p>
+    {% endfor %}
+    </tbody>
+  </table>
+  <!-- <form method="POST"> -->
+    {% csrf_token %}
+    <a class="btn btn-primary float-right" href="{% url 'library:book_add' %}">登録</a>
+    <a class="btn btn-info float-right" href="{% url 'library:book_search' %}">検索</a>
+    <a class="btn btn-light float-right" href="{% url 'library:book_list' %}">List</a>
+  </form>
+</div>
+{% endblock %}

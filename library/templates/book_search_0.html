@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}レビュー検索{% endblock %}
+
+{% block contents %}
+<div class="container" style="margin-top: 150px;">
+  <h1>レビュー検索</h1>
+  <form method="POST">
+    <table>
+      <caption>レビュー検索</caption>
+      <tr>
+        <th>書名</th>
+        <td colspan="3">{% form.title %}</td>
+      </tr>
+      <tr>
+        <th>著者名</th><td colspan="3">{{form.author}}</td>
+      </tr>
+      <tr>
+        <th>分野</th><td colspan="3">{{form.field}}</td>
+      </tr>
+      <tr>
+        <th>出版社</th><td colspan="3">{{form.publisher}}</td>
+      </tr>
+      <tr>
+        <th>出版年</th>
+        <td>{{form.pub_year_min}}</td>
+        <td>から</td>
+        <td>{{form.pub_year_max}}</td>
+      </tr>
+      <tr>
+        <th>ページ数</th>
+        <td>{{form.page_number_min}}</td>
+        <td>から</td>
+        <td>{{form.page_number_max}}</td>
+      </tr>
+      <tr>
+        <th>価格</th>
+        <td>{{form.price_min}}</td>
+        <td>から</td>
+        <td>{{form.price_max}}</td>
+      </tr>
+      <tr>
+        <th>ISBN</th><td colspan="3">{{form.isbn}}</td>
+      </tr>
+    </table>  
+    {% csrf_token %}
+    <a class="btn btn btn-warning float-right" href="{% url 'library:book_list' %}">キャンセル
+    </a>
+    <button class="btn btn-success float-right" type="submit">検索</button>
+  </form>
+</div>
+{% endblock %}

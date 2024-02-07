@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}レビュー更新{% endblock %}
+
+{% block contents %}
+<div class="container" style="margin-top: 150px;">
+  <div class="row">
+    <div class="my-div-style w-100">
+      <form method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <h1>レビュー更新</h1>
+        <table class="table">
+          {{ form.as_table }}
+        </table>
+        <a class="btn btn-warning" href="{% url 'library:private_list' %}">キャンセル</a>
+        <button class="btn btn-success" type="submit">更新</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

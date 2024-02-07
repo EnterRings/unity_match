@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}製品名一覧{% endblock %}
+
+{% block contents %}
+<div class="container" style="margin-top: 150px;">
+  <h1>製品名一覧</h1>
+
+  <form method="get" action="{% url 'library:book_list' %}" class="search_container">
+    <input type="text" name="search_query" size="25" placeholder="製品検索" value="{{ request.GET.search_query }}">
+    <button type="submit"><i class="fas fa-search"></i></button>
+  </form>
+
+  <div class="product-list">
+    {% for mousepad in mousepads %}
+      <div class="product-item">
+        {{ mousepad.product }}
+        <a href="{% url 'library:book_detail' mousepad.product %}">
+          <img src="/{{ mousepad.image }}" width="250" height="200">
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <a class="btn btn-primary float-right" href="{% url 'library:private_list' %}">private_list</a>
+</div>
+<style>
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .product-item {
+    width: 250px; /* または適切な幅に調整してください */
+  }
+</style>
+{% endblock %}
